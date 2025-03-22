@@ -46,20 +46,51 @@ def build_new_matrix(matrix):
 
 
 def main():
-    sample_1 = np.array([['INF', -1, 0, 'INF'],
-                ['INF', 'INF', 'INF', -1],
-                ['INF', -1, 'INF', -1],
-                [0, -1, 'INF', 'INF']], dtype=object)
+    '''Main function'''
+    custom = input('''Welcome to Walls of Maria and the Titans!'Would you like
+    to use the example matricies or enter in your own? 
+    Type "e" for the example or "c" for custom:''')
+    if custom == 'e':
+        sample_1 = np.array([['INF', -1, 0, 'INF'],
+                    ['INF', 'INF', 'INF', -1],
+                    ['INF', -1, 'INF', -1],
+                    [0, -1, 'INF', 'INF']], dtype=object)
+        
+        print('Sample 1 Result:')
+        print(build_new_matrix(sample_1))
     
-    print('Sample 1 Result:')
-    print(build_new_matrix(sample_1))
-  
-    print('Sample 2 Result:')
-    sample_2 = np.array([[0, 'INF', 'INF'],
-                ['INF', -1, 'INF'],
-                ['INF', 'INF', 0]], dtype=object)
-    
-    print(build_new_matrix(sample_2))
+        print('Sample 2 Result:')
+        sample_2 = np.array([[0, 'INF', 'INF'],
+                    ['INF', -1, 'INF'],
+                    ['INF', 'INF', 0]], dtype=object)
+        
+        print(build_new_matrix(sample_2))
+    elif custom == 'c':
+        print('You have chosen to enter in your own matrix.')
+        num_rows = int(input('Enter the number of rows: '))
+        num_cols = int(input('Enter the number of columns: '))
+        custom_matrix = np.empty((num_rows, num_cols), dtype=object)
+        valid_values = ['0', '-1', 'INF']
+        for i in range(num_rows):
+            for j in range(num_cols):
+                while True:
+                    value = input(f'Enter the value for row {i + 1} and column {j + 1} (0, -1, or INF): ')
+                    if value in valid_values:
+                        custom_matrix[i][j] = value if value == 'INF' else int(value)
+                        break
+                    else:
+                        print('Invalid input. Please enter only 0, -1, or INF.')
+        
+        print('You have entered the following matrix:')
+        print(custom_matrix)
+
+        print('Result:')
+        print(build_new_matrix(custom_matrix))
+    else:
+        print('Invalid input. Please enter "e" or "c".')
+        return -1
+
+    return 0
     
 if __name__ == '__main__':
     main()
