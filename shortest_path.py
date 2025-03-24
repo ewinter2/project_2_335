@@ -2,6 +2,7 @@
 
 '''
 Algorithm 1: Walls of Maria and the Titans
+Ellie Winter 
 '''
 
 from collections import deque

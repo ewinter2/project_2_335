@@ -2,6 +2,7 @@
 
 '''
 Algorithm 2: Vibe Check - Card Shuffle
+Ellie Winter
 '''
 
 
