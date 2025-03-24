@@ -1,21 +1,30 @@
 #!/usr/bin/env python3
 
+'''
+Algorithm 2: Vibe Check - Card Shuffle
+'''
+
+
 def make_valid_groups(hand, group_size):
+    '''
+    Makes valid groups of cards from a
+    hand that are group_size long
+    and have consecutive values
+    '''
     len_of_hand = len(hand)
 
     if len_of_hand % group_size != 0:
         print('Invalid group size.')
         return False
-    
+
     hand.sort()
-    
+
     hand_dict = {}
     for card in hand:
         if card in hand_dict:
             hand_dict[card] += 1
         else:
             hand_dict[card] = 1
-
 
     while hand_dict:
         first_card = min(hand_dict.keys())
@@ -27,13 +36,13 @@ def make_valid_groups(hand, group_size):
             if hand_dict[current_card] == 0:
                 del hand_dict[current_card]
     return True
-    
+
 
 def main():
     '''Main function'''
 
     custom = input('''Welcome to Vibe Check - Card Shuffle! Would you like
-    to use the example deck or enter in your own? 
+    to use the example deck or enter in your own?
     Type "e" for the example or "c" for custom:''')
 
     if custom == 'e':
@@ -51,7 +60,7 @@ def main():
         else:
             print('Invalid sample number. Please enter 1 or 2.')
             return 1
-        
+
     elif custom == 'c':
         print('You have chosen to enter in your own deck.')
         num_of_cards = int(input('How many cards are in your deck?'))
@@ -66,13 +75,14 @@ def main():
     else:
         print('Invalid choice. Please enter "e" or "c"')
         return 1
-    
+
     if valid:
         print('True. You can make valid groups with this hand!')
-    else: 
+    else:
         print('False. You cannot make valid groups with this hand')
 
     return valid
+
 
 if __name__ == '__main__':
     main()
